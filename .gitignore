@@ -21,6 +21,7 @@ old_*
 *.tmp
 *.tmp*
 *.toml
+*.cert
 
 
 

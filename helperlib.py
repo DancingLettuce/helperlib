@@ -107,8 +107,10 @@ class ScriptLog():
         print(f"Log updated: {new_entry}")
         return True
     def print_summary(self):
+        print("#" * 80)
         for i in self.summary:
-            print(i)
+            print(f"#{i}")
+        print("#" * 80)
 
 def print_log_file(log_text: str, filename: str = "log.txt", max_entries: int = 10):
     """
