@@ -18,6 +18,11 @@ old_*
 *local*.sh
 *local*.py
 *config*.*
+*.tmp
+*.tmp*
+*.toml
+
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
