@@ -17,6 +17,7 @@ old_*
 *local*.txt
 *local*.sh
 *local*.py
+*config*.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
