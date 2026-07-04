@@ -7,6 +7,7 @@ from pathlib import Path
 
 # git update
 # for d in */ ; do if [ -d "$d.git" ]; then echo -e "\n--- Updating $d ---"; (cd "$d" && git pull); fi; done 
+#a
 
 class TimeDiff():
     def __init__(self,start_time=None, end_time=None):
