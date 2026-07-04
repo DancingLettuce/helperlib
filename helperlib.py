@@ -172,9 +172,13 @@ def init_secrets(toml_string: str, filename: str="secrets.toml", unlink: bool = 
         print(f"TOML File {filename} found.")
     else:
         # Create the file and write the defaults
-        with open(config_file, "w", encoding="utf-8") as f:
-            f.write(toml_string)
+        config_path = Path(config_file)
+        # Create the directories
+        config_path.parent.mkdir(parents=True, exist_ok=True)
+        # Write the string and specify the encoding in one line
+        config_path.write_text(toml_string, encoding="utf-8")
         print(f"Created {filename} with default configurations.")
-    with open(filename, "rb") as f:
-        CONFIG = tomllib.load(f) 
+    CONFIG = tomllib.loads(Path(filename).read_text(encoding="utf-8"))
+    #with open(filename, "rb") as f:
+    #    CONFIG = tomllib.load(f) 
     return CONFIG
