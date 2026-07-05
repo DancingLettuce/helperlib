@@ -183,3 +183,38 @@ def init_secrets(toml_string: str, filename: str="secrets.toml", unlink: bool = 
     #with open(filename, "rb") as f:
     #    CONFIG = tomllib.load(f) 
     return CONFIG
+
+def get_multiline_input(message :str="Enter your text (Type ':q' on a new line or hit Enter twice to finish):"):
+    print(message)  
+    lines = []
+    blank_count = 0
+
+    while True:
+        try:
+            line = input()
+        except EOFError:
+            # Engineers love using Ctrl+D (Linux/Mac) or Ctrl+Z (Windows) to send EOF.
+            # This safely catches that standard terminal exit signal.
+            break
+
+        # Termination Condition 1: User types :q
+        if line.strip() == ":q":
+            break
+
+        # Termination Condition 2: Two consecutive empty lines
+        if line == "":
+            blank_count += 1
+            if blank_count == 2:
+                # Remove the first blank line from the list so it doesn't pollute the final string
+                if lines:
+                    lines.pop()
+                break
+        else:
+            # Reset the counter if they typed actual text
+            blank_count = 0
+
+        # Add the line to our list
+        lines.append(line)
+
+    # Stitch it all together with carriage returns
+    return "\n".join(lines)
